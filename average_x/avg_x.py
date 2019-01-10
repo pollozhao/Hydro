@@ -2,7 +2,7 @@ fin = 'calb.rch'
 avg_x = 7
 line_break = 25002
 
-fout = open(fin+'_agv','w')
+fout = open(fin+'_avg','w')
 ###############################################################################
 import numpy as np
 import time
@@ -10,7 +10,8 @@ import time
 start_t = time.time()
 mtx1,mtxn = [],[]
 group_size = line_break - 2
-
+print ('Start reading input file (will take about 4 minutes per Gb) ......')
+       
 fout.write('         1        50\n         1         1\n')
 #np.format_float_scientific(y, precision=3, exp_digits=1)
 
@@ -42,6 +43,7 @@ print ('len of main metrix:', len(mtxn))
 
 group = len(mtxn) / group_size
 print('No. of avg groups:',group)
+print ('Start calculating (will take about 2 minutes per Gb) ......')
 
 for g in range(int(group / avg_x)):
     start = 0 + g*(group_size) * avg_x
